@@ -1,3 +1,5 @@
+$(document).ready(readyNow);
+
 const employees = [
   {
     name: "Atticus",
@@ -32,7 +34,6 @@ const employees = [
 ];
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
-// let employeeReview = {};
 
 function bonus(employees) {
   for (let people of employees) {
@@ -51,6 +52,10 @@ function employeeBonus(person) {
     totalCompensation: totalCompensation.toLocaleString(),
     totalBonus: totalBonus.toLocaleString()
   };
+  $("#bonus-list").append(
+    `<li>Employee Name: ${name}, bonusPercentage: ${bonusPercentage * 100 +
+      "%"}, totalCompensation: ${totalCompensation.toLocaleString()}, totalBonus: ${totalBonus.toLocaleString()}</li>`
+  );
   return employeeReview;
 }
 
@@ -76,7 +81,14 @@ function bonusCalculator(employee) {
   }
   return bonusPercent;
 }
+function displayBonus() {}
+function readyNow() {
+  $("#bonus-button").on("click", buttonClick);
+}
 
+function buttonClick() {
+  bonus(employees);
+}
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.
 // This problem is massive! Break the problem down. Use the debugger.
 // What is the fewest lines of code I can write and test to get just a little closer?
