@@ -32,6 +32,27 @@ const employees = [
 ];
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
+// let employeeReview = {};
+
+function bonus(employees) {
+  for (let people of employees) {
+    console.log(employeeBonus(people));
+  }
+}
+
+function employeeBonus(person) {
+  let bonusPercentage = bonusCalculator(person);
+  let name = person.name;
+  let totalBonus = Math.round(person.annualSalary * bonusPercentage);
+  let totalCompensation = Number(person.annualSalary) + totalBonus;
+  let employeeReview = {
+    name: name,
+    bonusPercentage: bonusPercentage * 100 + "%",
+    totalCompensation: totalCompensation.toLocaleString(),
+    totalBonus: totalBonus.toLocaleString()
+  };
+  return employeeReview;
+}
 
 function bonusCalculator(employee) {
   let bonusPercent = 0;
