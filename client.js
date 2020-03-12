@@ -42,7 +42,7 @@ function bonus(employees) {
 }
 
 function employeeBonus(person) {
-  let bonusPercentage = bonusCalculator(person);
+  let bonusPercentage = calculateBonusPercent(person);
   let name = person.name;
   let totalBonus = Math.round(person.annualSalary * bonusPercentage);
   let totalCompensation = Number(person.annualSalary) + totalBonus;
@@ -53,24 +53,24 @@ function employeeBonus(person) {
     totalBonus: totalBonus.toLocaleString()
   };
   $("#bonus-list").append(
-    `<li>Employee Name: ${name}, bonusPercentage: ${bonusPercentage * 100 +
-      "%"}, totalCompensation: ${totalCompensation.toLocaleString()}, totalBonus: ${totalBonus.toLocaleString()}</li>`
+    `<li>Employee Name: ${name}; Bonus Percentage: ${bonusPercentage * 100 +
+      "%"}; Total Compensation: ${totalCompensation.toLocaleString()}; Total Bonus: ${totalBonus.toLocaleString()};</li>`
   );
   return employeeReview;
 }
 
-function bonusCalculator(employee) {
+function calculateBonusPercent(employee) {
   let bonusPercent = 0;
-  if (employee.reviewRating == 3) {
+  if (employee.reviewRating === 3) {
     bonusPercent = 0.04;
-  } else if (employee.reviewRating == 4) {
+  } else if (employee.reviewRating === 4) {
     bonusPercent = 0.06;
-  } else if (employee.reviewRating == 5) {
+  } else if (employee.reviewRating === 5) {
     bonusPercent = 0.1;
   } else {
     bonusPercent = 0;
   }
-  if (employee.employeeNumber.length == 4) {
+  if (employee.employeeNumber.length === 4) {
     bonusPercent += 0.05;
   }
   if (employee.annualSalary > 65000 && bonusPercent > 0) {
@@ -81,7 +81,7 @@ function bonusCalculator(employee) {
   }
   return bonusPercent;
 }
-function displayBonus() {}
+
 function readyNow() {
   $("#bonus-button").on("click", buttonClick);
 }

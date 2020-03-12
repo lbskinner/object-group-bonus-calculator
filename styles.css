@@ -1,0 +1,10 @@
+li {
+  padding: 3px;
+}
+
+button {
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 15px;
+  border-color: black;
+}
